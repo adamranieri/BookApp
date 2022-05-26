@@ -25,8 +25,21 @@ public class App {
 //        System.out.println(bookTitle);
 
         BookDAO bookDAO = new BookDaoPostgres();
-        Book b = bookDAO.getBookById(2);
-        System.out.println(b);
+        //System.out.println(bookDAO.getAllBooks());
+
+        // If I want to create a new Book Record in my database you create an Object that has an ID of 0
+        // An object that has an ID of 0 by convetion is not saved in a database yet
+        // Once the object is SAVED it is given an ID and returned
+//        Book kiteRunner = new Book(0,"Kite Runner", "Khaled Hosseini",2005);
+//
+//        bookDAO.createBook(kiteRunner);
+//        System.out.println(kiteRunner);
+//        bookDAO.deleteBookById(2);
+
+        // get a book from the database
+        Book book = bookDAO.getBookById(3);
+        book.setReleaseYear(2000); // update a field
+        bookDAO.updateBook(book); // save the update in the database
 
     }
 }
